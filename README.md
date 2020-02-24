@@ -78,3 +78,28 @@ MESSAGE_SELF //not allow to send messages to self
 };
 
 ```
+### Macro Variables
+```
+#define _GNU_SOURCE
+#define PEE(ERR_MSG) \
+perror(ERR_MSG); \
+exit(EXIT_FAILURE)
+#define MSG_H
+#define CONTENT_SIZE 70
+#define FILE_NAME_MAX 100
+#define BUF_SIZE sizeof(Message) / sizeof(char)
+```
+### Global Variables
+```
+Message message;
+MYSQL mysql;
+MYSQL_RES* result;
+MYSQL_ROW row;
+struct epoll_event ev, events[MAX_EVENTS];
+int listen_sock, conn_sock, nfds, epollfd;
+```
+#### Interface function between modules
+echo:
+<br>Receive messages and deliver to next department
+<br>for socket identifier
+<br>return type: void
